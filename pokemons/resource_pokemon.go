@@ -56,11 +56,20 @@ func resourcePokemonCreate(ctx context.Context, d *schema.ResourceData, m interf
 
 
 func resourcePokemonRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-  // Warning or errors can be collected in a slice type
+  c := m.(*hc.Client)
+  
   var diags diag.Diagnostics
+  
+  pokemonID := d.Id()
+  
+  pokemon, err := c.GetPokemon(pokemonID)
+  if err != nil {
+    return diag.FromErr(err)
+  }
   
   return diags
 }
+
 
 func resourcePokemonUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
   return resourcePokemonRead(ctx, d, m)
