@@ -2,4 +2,8 @@ go.mod
 go.sum
 pokemon-provider
 vendor
+examples/.terraform
+examples/terraform.tfstate
+examples/crash.log
+
 
