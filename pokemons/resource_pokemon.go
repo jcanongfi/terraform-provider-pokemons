@@ -49,6 +49,8 @@ func resourcePokemonCreate(ctx context.Context, d *schema.ResourceData, m interf
 
     d.SetId(strconv.Itoa(o.ID))
 
+    resourcePokemonRead(ctx, d, m)
+
     return diags
 }
 
@@ -64,6 +66,14 @@ func resourcePokemonRead(ctx context.Context, d *schema.ResourceData, m interfac
   
   pokemon, err := c.GetPokemon(pokemonID)
   if err != nil {
+    return diag.FromErr(err)
+  }
+
+  if err := d.Set("nom", pokemon.Nom); err != nil {
+    return diag.FromErr(err)
+  }
+  
+  if err := d.Set("type", pokemon.Type); err != nil {
     return diag.FromErr(err)
   }
   
