@@ -9,12 +9,3 @@ terraform {
 
 provider "pokemons" {}
 
-#module "test1" {
-#  source = "./mod_pokemon"
-#
-#  poke_name = "Giranta"
-#}
-
-#output "output-test1" {
-#  value = module.test1.coffee
-#}
