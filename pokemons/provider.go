@@ -11,7 +11,7 @@ func Provider() *schema.Provider {
         "pocketmonster": resourcePokemon(),
     },
     DataSourcesMap: map[string]*schema.Resource{
-        "pokemons":     dataSourcePokemons(),
+        "pocketmonster": dataSourcePokemons(),
     },
   }
 }
