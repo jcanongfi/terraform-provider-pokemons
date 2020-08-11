@@ -4,6 +4,7 @@ pokemon-provider
 vendor
 examples/.terraform
 examples/terraform.tfstate
+examples/terraform.tfstate.backup
 examples/crash.log
 
 
