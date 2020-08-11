@@ -47,7 +47,7 @@ func dataSourcePokemonsRead(ctx context.Context, d *schema.ResourceData, m inter
   // Warning or errors can be collected in a slice type
   var diags diag.Diagnostics
   
-  req, err := http.NewRequest("GET", fmt.Sprintf("%s/pokemons", "http://localhost:8888"), nil)
+  req, err := http.NewRequest("GET", fmt.Sprintf("%s/pokemon", "http://localhost:8888"), nil)
   if err != nil {
     return diag.FromErr(err)
   }
