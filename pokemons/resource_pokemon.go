@@ -82,13 +82,51 @@ func resourcePokemonRead(ctx context.Context, d *schema.ResourceData, m interfac
 
 
 func resourcePokemonUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+  c := m.(*hc.Client)
+
+  pokemonID := d.Id()
+
+// Todo : tester si seulement changement de "type"
+//  if d.HasChange("nom") {
+    v_nom := d.Get("nom").(string)
+    v_type := d.Get("type").(string)
+
+    v_poke := hc.Pokemon{
+      Nom: v_nom,
+      Type: v_type,
+    }
+
+    _, err := c.UpdatePokemon(pokemonID, v_poke)
+    if err != nil {
+      return diag.FromErr(err)
+    }
+
+    resourcePokemonRead(ctx, d, m)
+//    d.Set("last_updated", time.Now().Format(time.RFC850))
+//  }
   return resourcePokemonRead(ctx, d, m)
 }
 
+
+
+
 func resourcePokemonDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+  c := m.(*hc.Client)
+
   // Warning or errors can be collected in a slice type
   var diags diag.Diagnostics
-  
+
+  pokemonID := d.Id()
+
+  err := c.DeletePokemon(pokemonID)
+  if err != nil {
+    return diag.FromErr(err)
+  }
+
+  // d.SetId("") is automatically called assuming delete returns no errors, but
+  // it is added here for explicitness.
+  d.SetId("")
+
   return diags
 }
 
