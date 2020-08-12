@@ -1,6 +1,6 @@
 resource "pocketmonster" "pikachu" {
   provider = pokemons
-  nom = "Pikachu"
-  type = "elec"
+  nom      = "Pikachu"
+  type     = "elec"
 }
 
