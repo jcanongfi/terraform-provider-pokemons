@@ -19,6 +19,7 @@ func resourcePokemon() *schema.Resource {
         "nom": &schema.Schema{
           Type:     schema.TypeString,
           Required: true,
+    //      ForceNew: true,
         },
         "type": &schema.Schema{
           Type:     schema.TypeString,
