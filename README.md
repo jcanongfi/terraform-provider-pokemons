@@ -1,10 +1,14 @@
 # fake provider for pokemon-api
 
-## commands
+## Already done
 
 ```bash
 go mod init terraform-provider-pokemons
-go mod vendor
+```
+
+## commands
+
+```bash
 go build -o terraform-provider-pokemons
 mkdir -p ~/.terraform.d/plugins/jcanon.com/collec/pokemons/1.0/linux_amd64/
 mv terraform-provider-pokemons ~/.terraform.d/plugins/jcanon.com/collec/pokemons/1.0/linux_amd64/terraform-provider-pokemons
